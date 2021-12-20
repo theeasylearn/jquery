@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: repeat(2, 300px);
+            row-gap: 10px;
+            column-gap: 10px;
+        }
+
+        #container>div {
+            font-size: 2rem;
+            text-align: center;
+            background-color: aliceblue;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table width='100%' align="center" border="1">
+        <tr>
+            <td>
+                <input type="button" value="boys" id="">
+            </td>
+            <td>
+                <input type="button" value="girls" id="">
+            </td>
+            <td>
+                <input type="button" value="show all" id="">
+            </td>
+            <td>
+                <input type="button" value="hide all" id="">
+            </td>
+        </tr>
+    </table>
+    <div id="container">
+        <div class="boys">Boys</div>
+        <div class="girls">Girls</div>
+        <div class="boys">Boys</div>
+        <div class="girls">Girls</div>
+        <div class="boys">Boys</div>
+        <div class="girls">Girls</div>
+
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        //jquery activate 
+        $(document).ready(function () {
+            console.log("Jquery loaded....");
+            //$(".boys").hide("slow");
+        });
+    </script>
+</body>
+
+</html>

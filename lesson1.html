@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+    <style>
+        div 
+        {
+            float:left;
+            width:200px;
+            height:200px;
+            font-size: 2rem;
+            text-align: center;
+            background-color: aliceblue;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>First</div>
+    <div>second</div>
+    <div>third</div>
+    <div>fourth</div>
+    <div>five</div>
+    <div>six</div>
+
+<script src="jquery.js"></script>
+<script>
+    //jquery activate 
+    $(document).ready(function(){
+        console.log("Jquery loaded....");
+        $("div").click(function(){
+            $(this).hide("slow");
+        });
+    });
+</script>
+</body>
+</html>
