@@ -10,7 +10,7 @@
         #container {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: repeat(2, 300px);
+            grid-template-rows: repeat(3, 250px);
             row-gap: 10px;
             column-gap: 10px;
         }
@@ -28,34 +28,64 @@
     <table width='100%' align="center" border="1">
         <tr>
             <td>
-                <input type="button" value="boys" id="">
+                <input type="button" value="boys" id="btnboys">
             </td>
             <td>
-                <input type="button" value="girls" id="">
+                <input type="button" value="girls" id="btngirls">
             </td>
             <td>
-                <input type="button" value="show all" id="">
+                <input type="button" value="show all" id="btnshowall">
             </td>
             <td>
-                <input type="button" value="hide all" id="">
+                <input type="button" value="hide all" id="btnhideall">
             </td>
         </tr>
     </table>
     <div id="container">
-        <div class="boys">Boys</div>
-        <div class="girls">Girls</div>
-        <div class="boys">Boys</div>
-        <div class="girls">Girls</div>
-        <div class="boys">Boys</div>
-        <div class="girls">Girls</div>
-
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>    
     </div>
     <script src="jquery.js"></script>
     <script>
         //jquery activate 
         $(document).ready(function () {
             console.log("Jquery loaded....");
-            //$(".boys").hide("slow");
+            $("#btnboys").click(function(){
+                $(".girls").hide("slow");
+                $(".boys").show("slow");
+            });
+            $("#btngirls").click(function(){
+                $(".boys").hide(1000);
+                $(".girls").show(1000);
+            });
+
+            $("#btnshowall").click(function(){
+                $(".items").show("fast",function(){
+                    console.log("everything is displayed...");
+                });
+            })
+
+            $("#btnhideall").click(function(){
+                $(".items").hide("fast",function(){
+                    console.log("everything is hidden...");
+                });
+            });
+
+            $(".items").mouseenter(function(){
+                $(this).css("background-color","#a4d4ff").css("border","2px solid red");
+            });
+            
+            $(".items").mouseleave(function(){
+                $(this).css("background-color","aliceblue").css("border","1px solid black");
+            });
+            
         });
     </script>
 </body>

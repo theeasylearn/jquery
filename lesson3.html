@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+    <style>
+        div
+        {
+            width:50%;
+            padding:20px;
+            background-color: aliceblue;
+            margin:auto;
+        }
+        .input-box, input 
+        {
+            padding:10px;
+            display: block;
+            width:95%;
+            margin-bottom: 10px;
+            border: 1px solid black;
+        }
+        .focused
+        {
+            background-color: yellow;
+            color:red;
+            border: 2px solid red;
+        }
+        .blured
+        {
+            background-color: white;
+            color:black;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" name="" class="input-box" placeholder="">
+        <input type="text" name="" class="input-box" placeholder="">
+        <input type="text" name="" class="input-box" placeholder="">
+        <input type="text" name="" class="input-box" placeholder="">
+        <input type="text" name="" class="input-box" placeholder="">
+        <input type="button" value="submit">
+    </div>
+    
+<script src="jquery.js"></script>
+<script>
+    //jquery activate 
+    $(document).ready(function(){
+        console.log("Jquery loaded....");
+        $("input[type!='button]").focus(function(){
+            $(this).removeClass("blured").addClass("focused");
+        });
+
+        $("input[type!='button]").blur(function(){
+            $(this).removeClass("focused").addClass("blured");
+        });
+    });
+</script>
+</body>
+</html>
