@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: repeat(3, 250px);
+            row-gap: 10px;
+            column-gap: 10px;
+        }
+
+        #container>div {
+            color:yellow;
+            font-size: 2rem;
+            text-align: center;
+            background-color: red;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table width='100%' align="center" border="1">
+        <tr>
+            <td>
+                <input type="button" value="boys" id="btnboys">
+            </td>
+            <td>
+                <input type="button" value="girls" id="btngirls">
+            </td>
+            <td>
+                <input type="button" value="show all" id="btnshowall">
+            </td>
+            <td>
+                <input type="button" value="hide all" id="btnhideall">
+            </td>
+            <td>
+                <input type="button" value="fade To" id="btnfadeto">
+            </td>
+        </tr>
+    </table>
+    <div id="container">
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>    
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        //jquery activate 
+        var duration = 2000; //2 second because 1000 milisecond = 1 seconds 
+        $(document).ready(function () {
+            console.log("Jquery loaded....");
+            $("#btnboys").click(function(){
+                $(".girls").fadeOut(duration);
+                $(".boys").fadeIn(duration);
+            });
+            $("#btngirls").click(function(){
+                $(".boys").fadeOut(duration);
+                $(".girls").fadeIn(duration);
+            });
+            
+            $("#btnfadeto").click(function(){
+                $(".boys").fadeTo(duration,0.50);
+                $(".girls").fadeTo(duration,0.50);
+            });
+
+            $("#btnshowall").click(function(){
+                $(".items").fadeIn("fast",function(){
+                    console.log("everything is displayed...");
+                });
+            })
+
+            $("#btnhideall").click(function(){
+                $(".items").fadeOut("fast",function(){
+                    console.log("everything is hidden...");
+                });
+            });
+
+            $(".items").mouseenter(function(){
+                $(this).css("background-color","#a4d4ff").css("border","2px solid red");
+            });
+            
+            $(".items").mouseleave(function(){
+                $(this).css("background-color","aliceblue").css("border","1px solid black");
+            });
+            
+        });
+    </script>
+</body>
+
+</html>

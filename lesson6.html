@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: repeat(3, 250px);
+            row-gap: 10px;
+            column-gap: 10px;
+        }
+
+        #container>div {
+            font-size: 2rem;
+            text-align: center;
+            background-color: aliceblue;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+        img 
+        {
+            width:100%;
+            height:100%;
+        }
+        .flip {
+            transform: scaleX(-1);
+          }
+          .flip {
+            transform: scaleX(-1);
+          }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="item"><img src='https://www.picsum.photos/400' /></div>
+        <div class="item"><img src='https://www.picsum.photos/400' /></div>
+        <div class="item"><img src='https://www.picsum.photos/400' /></div>
+        <div class="item"><img src='https://www.picsum.photos/400' /></div>
+        <div class="item"><img src='https://www.picsum.photos/400' /></div>
+        <div class="item"><img src='https://www.picsum.photos/400' /></div>
+        <div class="item"><img src='https://www.picsum.photos/400' /></div>
+        <div class="item"><img src='https://www.picsum.photos/400' /></div>
+
+<script src="jquery.js"></script>
+<script>
+    //jquery activate 
+    //https://api.jquery.com/animate/
+    $(document).ready(function(){
+        console.log("Jquery loaded....");
+        var duration = 1000; //1 second
+        $("img").mouseover(function(){
+            //$(this).addClass("flip");
+            $(this).animate({height:'150%',width:'150%'},duration);
+        });
+        $("img").mouseleave(function(){
+            $(this).animate({height:'100%',width:'100%'},duration);
+        });
+    });
+</script>
+</body>
+</html>

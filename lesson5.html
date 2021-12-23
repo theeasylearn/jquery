@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: repeat(3, 250px);
+            row-gap: 10px;
+            column-gap: 10px;
+        }
+
+        #container>div {
+            font-size: 2rem;
+            text-align: center;
+            background-color: aliceblue;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table width='100%' align="center" border="1">
+        <tr>
+            <td>
+                <input type="button" value="boys" id="btnboys">
+            </td>
+            <td>
+                <input type="button" value="girls" id="btngirls">
+            </td>
+            <td>
+                <input type="button" value="slideDown all" id="btnslideDownall">
+            </td>
+            <td>
+                <input type="button" value="slideUp all" id="btnslideUpall">
+            </td>
+        </tr>
+    </table>
+    <div id="container">
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>
+        <div class="items girls">Girls</div>
+        <div class="items boys">Boys</div>    
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        //jquery activate 
+        $(document).ready(function () {
+            console.log("Jquery loaded....");
+            $("#btnboys").click(function(){
+                $(".girls").slideUp("slow");
+                $(".boys").slideDown("slow");
+            });
+            $("#btngirls").click(function(){
+                $(".boys").slideUp(1000);
+                $(".girls").slideDown(1000);
+            });
+
+            $("#btnslideDownall").click(function(){
+                $(".items").slideDown("fast",function(){
+                    console.log("everything is displayed...");
+                });
+            })
+
+            $("#btnslideUpall").click(function(){
+                $(".items").slideUp("fast",function(){
+                    console.log("everything is hidden...");
+                });
+            });
+
+            $(".items").mouseenter(function(){
+                $(this).css("background-color","#a4d4ff").css("border","2px solid red");
+            });
+            
+            $(".items").mouseleave(function(){
+                $(this).css("background-color","aliceblue").css("border","1px solid black");
+            });
+            
+        });
+    </script>
+</body>
+
+</html>
