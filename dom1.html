@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+</head>
+<body>
+    <h1>DOM</h1>
+    <input type="text" id="txtvalue">
+    <div id="div1">
+        output will come here
+    </div>
+    <hr>
+    <p id="p1">
+
+    </p>
+<script src="jquery.js"></script>
+<script>
+    //jquery activate 
+    $(document).ready(function(){
+        console.log("Jquery loaded....");
+        $("#div1").html("<h2>DOM html method</h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum hendrerit mollis erat in porta. Morbi vitae nunc varius, sodales ipsum quis, sollicitudin turpis. Vestibulum metus quam, vehicula et ipsum nec, dignissim tempor diam. Aenean sed placerat nisi. Nulla eu ultrices mauris. Integer nec laoreet dolor."); //it will change content of tag whose id is div1 as html
+
+
+        $("#p1").text("<h2>DOM html method</h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum hendrerit mollis erat in porta. Morbi vitae nunc varius, sodales ipsum quis, sollicitudin turpis. Vestibulum metus quam, vehicula et ipsum nec, dignissim tempor diam. Aenean sed placerat nisi. Nulla eu ultrices mauris. Integer nec laoreet dolor."); ////it will change content of tag whose id is p1 as plain text
+
+        $("#txtvalue").val("The easylearn academy"); //we use val() because it is input tag
+    });
+</script>
+</body>
+</html>
