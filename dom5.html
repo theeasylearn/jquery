@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+    <style>
+        .top {
+            background-color: aliceblue;
+        }
+
+        .bottom {
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <table border=2 align=center width='90%' cellpadding=5>
+        <tr>
+            <td>
+                <input type="text" placeholder="name" id="name">
+            </td>
+            <td>
+                <input type="number" placeholder="age" id="age">
+            </td>
+            <td>
+                <input type="email" placeholder="email" id="email">
+            </td>
+            <td>
+                <input type="button" value="add new row at top" id="btnprepend">
+            </td>
+            <td>
+                <input type="button" value="add new row at bottom" id="btnappend">
+            </td>
+            <td>
+                <input type="button" value="empty table" id="btnempty">
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table border=2 align=center width='90%' cellpadding=5>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>age</th>
+                <th>email</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody id="content">
+
+        </tbody>
+    </table>
+    <script src="jquery.js"></script>
+    <script>
+        //jquery activate 
+        $(document).ready(function () {
+            console.log("Jquery loaded....");
+            $("#btnprepend").click(function () {
+                AddRow('prepend');
+                
+            });
+
+            $("#btnappend").click(function () {
+                AddRow('append');
+                //$("#content").append(newrow);
+            });
+
+            $("#btnempty").click(function () {
+
+                $("#content").empty();
+            });
+
+            function AddRow(mode) {
+                var name = $("#name").val();
+                var age = $("#age").val();
+                var email = $("#email").val();
+                var newrow = `<tr><td>${name}</td><td>${age}</td><td>${email}</td><td><a class='deleterow' href='#'>Delete</a></td><td><a href='#' class='editrow'>Edit</a></td></tr>`;
+                if(mode=='prepend')
+                {
+                    $("#content").prepend(newrow);
+                }
+                else 
+                {
+                    $("#content").append(newrow);
+                }
+            }
+
+        });
+        $("#content").on("click",".deleterow",function(){
+            console.log("delete event occured...");
+            //console.log($(this).parent().parent().html());
+            $(this).parent().parent().remove();
+        });
+
+        $("#content").on("click",".editrow",function(){
+            console.log("edit event occured...");
+        });
+    </script>
+</body>
+
+</html>
