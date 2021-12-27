@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery - The easylearn academy</title>
+    <style>
+        .item {
+            background-color: aliceblue;
+            padding: 10px;
+            border: 1px solid red;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+            <img src="https://www.picsum.photos/600" alt="">
+        </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+        //jquery activate 
+        function randomSize() {
+            return Math.floor(Math.random() * (600 - 625 + 1)) + 625;
+        }
+        $(document).ready(function () {
+            var lastScrollTop = 0;
+            var st;
+            var size = 400;
+            $(window).scroll(function (event) {
+                st = $(this).scrollTop();
+                if (st > lastScrollTop) {
+                    size =randomSize();
+                    //console.log("down scroll ...." + st);
+                    var item = `<div class=\"item\"><img src=\"https://www.picsum.photos/${size}\" ></div>`;
+                    $(".container").append(item);
+                }
+                lastScrollTop = st;
+
+            });
+        });
+
+    </script>
+</body>
+
+</html>

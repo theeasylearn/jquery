@@ -21,13 +21,13 @@
     <table border=2 align=center width='90%' cellpadding=5>
         <tr>
             <td>
-                <input type="text" placeholder="name" id="name">
+                <input class="input" type="text" placeholder="name" id="name">
             </td>
             <td>
-                <input type="number" placeholder="age" id="age">
+                <input class="input" type="number" placeholder="age" id="age">
             </td>
             <td>
-                <input type="email" placeholder="email" id="email">
+                <input class="input" type="email" placeholder="email" id="email">
             </td>
             <td>
                 <input type="button" value="add new row at top" id="btnprepend">
@@ -37,6 +37,9 @@
             </td>
             <td>
                 <input type="button" value="empty table" id="btnempty">
+            </td>
+            <td>
+                <input type="button" value="update" id="btnupdate" disabled>
             </td>
         </tr>
     </table>
@@ -58,11 +61,12 @@
     <script src="jquery.js"></script>
     <script>
         //jquery activate 
+        var row;
         $(document).ready(function () {
             console.log("Jquery loaded....");
             $("#btnprepend").click(function () {
                 AddRow('prepend');
-                
+
             });
 
             $("#btnappend").click(function () {
@@ -80,26 +84,46 @@
                 var age = $("#age").val();
                 var email = $("#email").val();
                 var newrow = `<tr><td>${name}</td><td>${age}</td><td>${email}</td><td><a class='deleterow' href='#'>Delete</a></td><td><a href='#' class='editrow'>Edit</a></td></tr>`;
-                if(mode=='prepend')
-                {
+                if (mode == 'prepend') {
                     $("#content").prepend(newrow);
                 }
-                else 
-                {
+                else {
                     $("#content").append(newrow);
                 }
             }
 
         });
-        $("#content").on("click",".deleterow",function(){
+        $("#content").on("click", ".deleterow", function () {
             console.log("delete event occured...");
             //console.log($(this).parent().parent().html());
             $(this).parent().parent().remove();
         });
 
-        $("#content").on("click",".editrow",function(){
-            console.log("edit event occured...");
+        $("#content").on("click", ".editrow", function () {
+            row = $(this).parent().parent();
+            var email, name, age;
+            name = $(row).find("td").eq(0).html();
+            age = $(row).find("td").eq(1).html();
+            email = $(row).find("td").eq(2).html();
+            console.log(`${name} ${age} ${email}`);
+            $("#name").val(name);
+            $("#age").val(age);
+            $("#email").val(email);
+            $("#btnupdate").prop("disabled", false);
         });
+        $("#btnupdate").click(function () {
+            console.log("update button clicked...");
+            var name = $("#name").val();
+            var age = $("#age").val();
+            var email = $("#email").val();
+            console.log(`${name} ${age} ${email}`);
+            $(row).find("td").eq(0).html(name);
+            $(row).find("td").eq(1).html(age);
+            $(row).find("td").eq(2).html(email);
+            $("#btnupdate").prop("disabled", true);
+            $(".input").val("");
+        })
+
     </script>
 </body>
 
